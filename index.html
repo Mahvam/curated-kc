@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curated KC — Passport to Kansas City</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE0;
+    --cream-dark: #EDE3CC;
+    --sienna: #B5522A;
+    --sienna-light: #C96D3F;
+    --navy: #1C2B3A;
+    --navy-light: #2E4057;
+    --gold: #C49A3C;
+    --warm-white: #FAF6EE;
+    --text-dark: #1C2B3A;
+    --text-mid: #5C4A35;
+    --text-light: #8A7560;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background-color: var(--navy);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(181,82,42,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(196,154,60,0.1) 0%, transparent 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-skyline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    opacity: 0.13;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--sienna-light);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-style: italic;
+    color: rgba(245,239,224,0.65);
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-tagline {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-tagline span { margin: 0 0.5rem; opacity: 0.5; }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .btn-primary {
+    background: var(--sienna);
+    color: var(--cream);
+    border: none;
+    padding: 0.85rem 2.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover { background: var(--sienna-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,239,224,0.3);
+    padding: 0.85rem 2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.25s ease, transform 0.2s ease;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.5s;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  .scroll-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.4);
+  }
+
+  /* WELCOME STRIP */
+  .welcome-strip {
+    background: var(--sienna);
+    padding: 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .welcome-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-style: italic;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+  }
+
+  /* WELCOME SECTION */
+  .welcome {
+    background: var(--warm-white);
+    padding: 6rem 2rem;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .welcome h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .welcome p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* CATEGORIES */
+  .categories {
+    background: var(--cream);
+    padding: 5rem 2rem;
+  }
+
+  .categories-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .categories-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .categories-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: rgba(28,43,58,0.1);
+    border: 1px solid rgba(28,43,58,0.1);
+  }
+
+  .cat-item {
+    background: var(--warm-white);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: background 0.25s ease;
+    cursor: pointer;
+  }
+
+  .cat-item:hover { background: var(--navy); }
+  .cat-item:hover .cat-icon { color: var(--gold); }
+  .cat-item:hover .cat-name { color: var(--cream); }
+  .cat-item:hover .cat-count { color: rgba(245,239,224,0.5); }
+
+  .cat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    color: var(--sienna);
+    transition: color 0.25s ease;
+  }
+
+  .cat-name {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    transition: color 0.25s ease;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .cat-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-light);
+    transition: color 0.25s ease;
+  }
+
+  /* SPOTS */
+  .spots {
+    background: var(--cream-dark);
+    padding: 6rem 2rem;
+  }
+
+  .spots-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .spots-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .spots-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .spots-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-mid);
+  }
+
+  .spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .spot-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(28,43,58,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .spot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(28,43,58,0.1);
+  }
+
+  .spot-num {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .spot-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.5);
+  }
+
+  .spot-body {
+    padding: 1.5rem;
+  }
+
+  .spot-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .spot-vibe {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--sienna);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .spot-address {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--text-light);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .spot-address::before {
+    content: '◉';
+    font-size: 0.6rem;
+    color: var(--sienna);
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .btn-directions {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sienna);
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .btn-directions:hover { color: var(--sienna); }
+
+  /* BOX SECTION */
+  .box-section {
+    background: var(--navy);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(181,82,42,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .box-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .box-section .section-label { color: var(--gold); }
+
+  .box-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .box-section p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(245,239,224,0.65);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .box-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .box-pill {
+    border: 1px solid rgba(245,239,224,0.2);
+    color: rgba(245,239,224,0.8);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+  }
+
+  /* SHARE SECTION */
+  .share-section {
+    background: var(--sienna);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .share-inner { max-width: 600px; margin: 0 auto; }
+
+  .share-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .share-section p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(245,239,224,0.75);
+    margin-bottom: 2.5rem;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 0.85rem 2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-whatsapp:hover { opacity: 0.9; }
+
+  .btn-copy {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,239,224,0.4);
+    padding: 0.85rem 2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .btn-copy:hover { border-color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(245,239,224,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-by {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.3);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+    .spots-grid { grid-template-columns: 1fr; }
+    .hero-cta-group { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- KC SKYLINE + STADIUM SVG -->
+  <svg class="hero-skyline" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+    <!-- Ground line -->
+    <rect x="0" y="300" width="1440" height="20" fill="#F5EFE0"/>
+
+    <!-- FAR LEFT buildings -->
+    <rect x="0" y="230" width="28" height="70" fill="#F5EFE0"/>
+    <rect x="5" y="210" width="18" height="22" fill="#F5EFE0"/>
+    <rect x="30" y="245" width="20" height="55" fill="#F5EFE0"/>
+    <rect x="52" y="220" width="35" height="80" fill="#F5EFE0"/>
+    <rect x="57" y="205" width="25" height="18" fill="#F5EFE0"/>
+    <rect x="63" y="195" width="12" height="12" fill="#F5EFE0"/>
+    <rect x="68" y="185" width="3" height="12" fill="#F5EFE0"/>
+
+    <!-- LEFT cluster -->
+    <rect x="95" y="200" width="45" height="100" fill="#F5EFE0"/>
+    <rect x="100" y="185" width="35" height="18" fill="#F5EFE0"/>
+    <rect x="107" y="170" width="20" height="17" fill="#F5EFE0"/>
+    <rect x="114" y="155" width="6" height="17" fill="#F5EFE0"/>
+    <rect x="148" y="225" width="30" height="75" fill="#F5EFE0"/>
+    <rect x="180" y="215" width="22" height="85" fill="#F5EFE0"/>
+    <rect x="184" y="200" width="14" height="17" fill="#F5EFE0"/>
+
+    <!-- KC POWER & LIGHT / TALL CENTER-LEFT -->
+    <rect x="210" y="140" width="55" height="160" fill="#F5EFE0"/>
+    <rect x="215" y="125" width="45" height="18" fill="#F5EFE0"/>
+    <rect x="222" y="110" width="30" height="17" fill="#F5EFE0"/>
+    <rect x="229" y="95" width="16" height="17" fill="#F5EFE0"/>
+    <rect x="235" y="80" width="4" height="17" fill="#F5EFE0"/>
+    <rect x="268" y="190" width="38" height="110" fill="#F5EFE0"/>
+    <rect x="272" y="175" width="30" height="18" fill="#F5EFE0"/>
+
+    <!-- STADIUM ARCH (center focal point) -->
+    <path d="M 460 300 L 460 180 Q 560 80 660 180 L 660 300" fill="none" stroke="#F5EFE0" stroke-width="5"/>
+    <path d="M 480 300 L 480 195 Q 560 115 640 195 L 640 300" fill="none" stroke="#F5EFE0" stroke-width="2.5"/>
+    <!-- Stadium base -->
+    <rect x="450" y="255" width="220" height="45" fill="#F5EFE0"/>
+    <rect x="460" y="240" width="200" height="18" fill="#F5EFE0"/>
+    <!-- Stadium lights -->
+    <rect x="455" y="165" width="6" height="20" fill="#C49A3C"/>
+    <rect x="659" y="165" width="6" height="20" fill="#C49A3C"/>
+    <circle cx="458" cy="162" r="5" fill="#C49A3C"/>
+    <circle cx="662" cy="162" r="5" fill="#C49A3C"/>
+
+    <!-- RIGHT-CENTER buildings -->
+    <rect x="695" y="195" width="40" height="105" fill="#F5EFE0"/>
+    <rect x="700" y="178" width="30" height="20" fill="#F5EFE0"/>
+    <rect x="706" y="162" width="18" height="18" fill="#F5EFE0"/>
+    <rect x="740" y="210" width="32" height="90" fill="#F5EFE0"/>
+    <rect x="775" y="180" width="50" height="120" fill="#F5EFE0"/>
+    <rect x="780" y="162" width="40" height="20" fill="#F5EFE0"/>
+    <rect x="787" y="148" width="26" height="16" fill="#F5EFE0"/>
+    <rect x="793" y="135" width="14" height="15" fill="#F5EFE0"/>
+    <rect x="799" y="120" width="3" height="17" fill="#F5EFE0"/>
+
+    <!-- RIGHT cluster -->
+    <rect x="835" y="220" width="28" height="80" fill="#F5EFE0"/>
+    <rect x="865" y="200" width="45" height="100" fill="#F5EFE0"/>
+    <rect x="870" y="182" width="35" height="20" fill="#F5EFE0"/>
+    <rect x="876" y="167" width="23" height="17" fill="#F5EFE0"/>
+    <rect x="882" y="154" width="11" height="15" fill="#F5EFE0"/>
+    <rect x="915" y="228" width="30" height="72" fill="#F5EFE0"/>
+    <rect x="948" y="215" width="38" height="85" fill="#F5EFE0"/>
+    <rect x="990" y="235" width="25" height="65" fill="#F5EFE0"/>
+
+    <!-- FAR RIGHT -->
+    <rect x="1020" y="210" width="42" height="90" fill="#F5EFE0"/>
+    <rect x="1025" y="193" width="32" height="20" fill="#F5EFE0"/>
+    <rect x="1065" y="228" width="28" height="72" fill="#F5EFE0"/>
+    <rect x="1096" y="218" width="22" height="82" fill="#F5EFE0"/>
+    <rect x="1120" y="240" width="35" height="60" fill="#F5EFE0"/>
+    <rect x="1158" y="225" width="30" height="75" fill="#F5EFE0"/>
+    <rect x="1163" y="210" width="20" height="17" fill="#F5EFE0"/>
+    <rect x="1192" y="245" width="50" height="55" fill="#F5EFE0"/>
+    <rect x="1197" y="228" width="40" height="20" fill="#F5EFE0"/>
+    <rect x="1245" y="235" width="28" height="65" fill="#F5EFE0"/>
+    <rect x="1276" y="248" width="40" height="52" fill="#F5EFE0"/>
+    <rect x="1319" y="238" width="35" height="62" fill="#F5EFE0"/>
+    <rect x="1357" y="250" width="30" height="50" fill="#F5EFE0"/>
+    <rect x="1390" y="242" width="50" height="58" fill="#F5EFE0"/>
+
+    <!-- Sunset arc glow behind skyline -->
+    <ellipse cx="560" cy="310" rx="320" ry="180" fill="#B5522A" opacity="0.18"/>
+    <ellipse cx="560" cy="310" rx="200" ry="120" fill="#C49A3C" opacity="0.12"/>
+  </svg>
+
+  <p class="hero-eyebrow">Kansas City 2026 Football</p>
+  <h1 class="hero-title">Curated<br><em>KC</em></h1>
+  <p class="hero-sub">Your passport to Kansas City, thoughtfully mapped.</p>
+  <p class="hero-tagline">Eat <span>·</span> Explore <span>·</span> Experience KC <span>·</span> Repeat</p>
+  <div class="hero-cta-group">
+    <a href="#explore" class="btn-primary">Explore the Guide</a>
+    <a href="#share" class="btn-outline">Share This Passport</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- WELCOME STRIP -->
+<div class="welcome-strip">
+  <p>"A city of heart, history, and hidden gems — all in one curated guide."</p>
+</div>
+
+<!-- WELCOME -->
+<section style="background: var(--warm-white); padding: 6rem 2rem;">
+  <div style="max-width: 780px; margin: 0 auto; text-align: center;">
+    <span class="section-label">Welcome to KC</span>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 400; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem;">Your city, already curated.</h2>
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); color: var(--text-mid); line-height: 1.8;">This guide brings together local favorites, hidden gems, and places we love — all easy to explore during your stay. No overwhelm. Just the good stuff, hand-picked for you.</p>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="explore">
+  <div class="categories-inner">
+    <div class="categories-header">
+      <span class="section-label">Find Your Way Through KC</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 400; color: var(--navy);">Explore by Vibe</h2>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-item">
+        <span class="cat-icon">⚑</span>
+        <span class="cat-name">Start Here</span>
+        <span class="cat-count">Your first stops</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">◈</span>
+        <span class="cat-name">Eat &amp; Drink</span>
+        <span class="cat-count">Bars &amp; restaurants</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">◇</span>
+        <span class="cat-name">Shop &amp; Discover</span>
+        <span class="cat-count">Local finds</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">✦</span>
+        <span class="cat-name">Experiences</span>
+        <span class="cat-count">Facials, more</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">◉</span>
+        <span class="cat-name">Watch &amp; Gather</span>
+        <span class="cat-count">Fan destinations</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">♫</span>
+        <span class="cat-name">Live &amp; Local</span>
+        <span class="cat-count">Music &amp; culture</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-icon">✧</span>
+        <span class="cat-name">18th &amp; Vine</span>
+        <span class="cat-count">Jazz &amp; heritage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SPOTS -->
+<section class="spots">
+  <div class="spots-inner">
+    <div class="spots-header">
+      <span class="section-label">Featured Stops</span>
+      <h2>Local Favorites</h2>
+      <p>Hand-picked places worth your time.</p>
+    </div>
+    <div class="spots-grid">
+
+      <div class="spot-card">
+        <div class="spot-num"><span>01</span><span class="spot-tag">Watch &amp; Gather</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Tower Tavern</h3>
+          <p class="spot-vibe">The perfect spot to watch the match and raise a glass with the city.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Tower+Tavern+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://towertavernkc.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>02</span><span class="spot-tag">Shop &amp; Discover</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Urbana</h3>
+          <p class="spot-vibe">Prairie Village's gem — relaxed, local, and always delicious.</p>
+          <p class="spot-address">Prairie Village, KS</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Urbana+Prairie+Village+KS" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://urbanashop.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>03</span><span class="spot-tag">Eat &amp; Drink</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">King G</h3>
+          <p class="spot-vibe">Crossroads cool — where the art district meets great food and good vibes.</p>
+          <p class="spot-address">Crossroads Arts District, Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=King+G+Kansas+City+Crossroads" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://www.kinggkc.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>04</span><span class="spot-tag">Eat &amp; Drink</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Jim's Alley</h3>
+          <p class="spot-vibe">A KC local favorite — unpretentious, fun, and full of character.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Jim's+Alley+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://www.jimsalleybar.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>05</span><span class="spot-tag">Experiences</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">The Only Facial</h3>
+          <p class="spot-vibe">Treat yourself between matches. Skincare that actually delivers.</p>
+          <p class="spot-address">Overland Park, KS</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=The+Only+Facial+Overland+Park" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://www.theonlyfacial.com/locations/overland-park/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>06</span><span class="spot-tag">Shop &amp; Discover</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Ampersand</h3>
+          <p class="spot-vibe">Design-forward finds in the heart of KC's creative scene.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Ampersand+Design+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://ampersanddesignstudio.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>07</span><span class="spot-tag">Eat &amp; Drink</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">André's Chocolates</h3>
+          <p class="spot-vibe">A KC institution. The chocolates make perfect gifts — if they make it home.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=André's+Chocolates+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://andreschocolates.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>08</span><span class="spot-tag">Watch &amp; Gather</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Tom's Town Distillery</h3>
+          <p class="spot-vibe">Craft spirits with a side of KC history. Perfect for post-match celebrations.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Tom's+Town+Distilling+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://www.toms-town.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>09</span><span class="spot-tag">Eat &amp; Drink</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Q39</h3>
+          <p class="spot-vibe">Award-winning KC BBQ. You can't visit without it. Enough said.</p>
+          <p class="spot-address">Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Q39+Kansas+City+BBQ" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://q39kc.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spot-card">
+        <div class="spot-num"><span>10</span><span class="spot-tag">Live &amp; Local</span></div>
+        <div class="spot-body">
+          <h3 class="spot-name">Starlight Theatre</h3>
+          <p class="spot-vibe">Open-air concerts under the KC sky. Music when you're not watching football.</p>
+          <p class="spot-address">Swope Park, Kansas City, MO</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=Starlight+Theatre+Kansas+City" class="btn-directions" target="_blank">Get Directions →</a>
+            <a href="https://www.kcstarlight.com/" class="btn-directions" target="_blank">Visit Website →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME BOX -->
+<section class="box-section">
+  <div class="box-inner">
+    <span class="section-label">The Curated KC Welcome Box</span>
+    <h2>Everything you need<br><em style="font-family:'Playfair Display',serif; font-style:italic;">to feel at home.</em></h2>
+    <p>Included in your welcome box, you may find exclusive offers, gift cards, and Kansas City 2026 Football specials from our featured local partners.</p>
+    <div class="box-items">
+      <span class="box-pill">Gift Cards</span>
+      <span class="box-pill">Exclusive Offers</span>
+      <span class="box-pill">Local Favorites</span>
+      <span class="box-pill">KC 2026 Specials</span>
+      <span class="box-pill">This Guide</span>
+    </div>
+    <p style="font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,239,224,0.4);">Curated by Vagabond Mercantile</p>
+  </div>
+</section>
+
+<!-- SHARE -->
+<section class="share-section" id="share">
+  <div class="share-inner">
+    <span class="section-label" style="color: rgba(245,239,224,0.6);">Spread the Word</span>
+    <h2>Share Your Passport</h2>
+    <p>Send this guide to your group chat. The more people explore KC, the better it gets for everyone.</p>
+    <div class="share-buttons">
+      <button class="btn-whatsapp" onclick="shareWhatsApp()">
+        <span>📱</span> Share on WhatsApp
+      </button>
+      <button class="btn-copy" onclick="copyLink()">
+        <span>⎘</span> Copy Link
+      </button>
+    </div>
+    <p id="copy-confirm" style="font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(245,239,224,0.6); margin-top:1rem; font-size:0.9rem; opacity:0; transition:opacity 0.3s ease;"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Curated KC</p>
+  <p class="footer-by">by Vagabond Mercantile</p>
+  <p class="footer-tagline">Curated for the Journey</p>
+</footer>
+
+<script>
+function shareWhatsApp() {
+  const text = encodeURIComponent("Check out this curated guide to Kansas City 🌅 — local favorites, hidden gems, and everything you need for your stay: " + window.location.href);
+  window.open("https://wa.me/?text=" + text, "_blank");
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const msg = document.getElementById('copy-confirm');
+    msg.textContent = "Link copied — now go share it!";
+    msg.style.opacity = '1';
+    setTimeout(() => { msg.style.opacity = '0'; }, 3000);
+  });
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
