@@ -1,0 +1,150 @@
+<svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <defs>
+    <pattern id="grid" width="45" height="45" patternUnits="userSpaceOnUse">
+      <path d="M 45 0 L 0 0 0 45" fill="none" stroke="rgba(28,43,58,0.055)" stroke-width="0.7"/>
+    </pattern>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend"/>
+      <feComponentTransfer in="blend">
+        <feFuncA type="linear" slope="1"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <!-- Parchment background -->
+  <rect width="800" height="560" fill="#F5EFE0"/>
+  <rect width="800" height="560" fill="url(#grid)"/>
+
+  <!-- Missouri River - sweeps across the north -->
+  <path d="M -10 118 Q 80 88 180 115 Q 280 142 380 118 Q 480 95 580 112 Q 680 130 810 108"
+        fill="none" stroke="#c2d8e4" stroke-width="22" opacity="0.55"/>
+  <path d="M -10 118 Q 80 88 180 115 Q 280 142 380 118 Q 480 95 580 112 Q 680 130 810 108"
+        fill="none" stroke="#d4e6ef" stroke-width="14" opacity="0.4"/>
+  <text x="90" y="108" font-family="Georgia,serif" font-size="8" fill="#7a9bac" opacity="0.7" letter-spacing="2">MISSOURI RIVER</text>
+
+  <!-- Major roads (faint) -->
+  <line x1="0" y1="175" x2="800" y2="175" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="0" y1="255" x2="800" y2="255" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="0" y1="335" x2="800" y2="335" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="0" y1="415" x2="800" y2="415" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="0" y1="495" x2="800" y2="495" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="120" y1="0" x2="120" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="240" y1="0" x2="240" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="360" y1="0" x2="360" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="480" y1="0" x2="480" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="600" y1="0" x2="600" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <line x1="720" y1="0" x2="720" y2="560" stroke="rgba(28,43,58,0.07)" stroke-width="1.2"/>
+  <!-- Ward Pkwy diagonal -->
+  <line x1="560" y1="560" x2="800" y2="320" stroke="rgba(28,43,58,0.055)" stroke-width="1.5"/>
+
+  <!-- DOTTED TRAIL connecting all stops -->
+  <path d="M 490 82
+           C 475 115 455 148 395 192
+           C 340 225 235 248 162 268
+           C 130 295 175 345 288 393
+           C 350 428 435 415 492 378
+           C 510 435 498 462 458 488"
+        fill="none"
+        stroke="#1C2B3A"
+        stroke-width="2.8"
+        stroke-dasharray="9,6"
+        opacity="0.72"/>
+
+  <!-- Trail arrows -->
+  <polygon points="393,189 404,197 389,200" fill="#1C2B3A" opacity="0.55"/>
+  <polygon points="164,265 158,277 172,274" fill="#1C2B3A" opacity="0.55"/>
+  <polygon points="286,390 297,397 291,383" fill="#1C2B3A" opacity="0.55"/>
+  <polygon points="490,375 501,368 498,381" fill="#1C2B3A" opacity="0.55"/>
+  <polygon points="456,485 468,479 466,492" fill="#1C2B3A" opacity="0.55"/>
+
+  <!-- ═══ STOP 1: Tower Tavern — River Market ═══ -->
+  <ellipse cx="490" cy="72" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="480,88 500,88 490,106" fill="#C49A3C"/>
+  <ellipse cx="490" cy="72" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="490" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">1</text>
+  <!-- Label box right -->
+  <rect x="513" y="52" width="148" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="521" y="66" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">RIVER MARKET</text>
+  <text x="521" y="79" font-size="11" fill="#F5EFE0">Tower Tavern</text>
+  <text x="521" y="91" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">401 N. 2nd St, KC MO</text>
+
+  <!-- ═══ STOP 2: The Only Facial — Downtown ═══ -->
+  <ellipse cx="395" cy="182" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="385,198 405,198 395,216" fill="#C49A3C"/>
+  <ellipse cx="395" cy="182" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="395" y="188" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">2</text>
+  <!-- Label box right -->
+  <rect x="418" y="162" width="170" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="426" y="176" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">DOWNTOWN · MARTINI CORNER</text>
+  <text x="426" y="189" font-size="11" fill="#F5EFE0">The Only Facial</text>
+  <text x="426" y="201" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">1100 Main St, KC MO</text>
+
+  <!-- ═══ STOP 3: Tom's Town — West Bottoms ═══ -->
+  <ellipse cx="162" cy="258" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="152,274 172,274 162,292" fill="#C49A3C"/>
+  <ellipse cx="162" cy="258" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="162" y="264" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">3</text>
+  <!-- Label box right -->
+  <rect x="185" y="238" width="165" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="193" y="252" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">WEST BOTTOMS</text>
+  <text x="193" y="265" font-size="11" fill="#F5EFE0">Tom's Town Distilling</text>
+  <text x="193" y="277" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">1701 Summit St, KC MO</text>
+
+  <!-- ═══ STOP 4: André's Chocolates — Off the Plaza ═══ -->
+  <ellipse cx="288" cy="382" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="278,398 298,398 288,416" fill="#C49A3C"/>
+  <ellipse cx="288" cy="382" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="288" y="388" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">4</text>
+  <!-- Label box LEFT -->
+  <rect x="12" y="362" width="160" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="20" y="376" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">OFF THE PLAZA</text>
+  <text x="20" y="389" font-size="11" fill="#F5EFE0">André's Chocolates</text>
+  <text x="20" y="401" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">5018 Main St, KC MO</text>
+
+  <!-- ═══ STOP 5: Q39 — Crossroads ═══ -->
+  <ellipse cx="492" cy="368" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="482,384 502,384 492,402" fill="#C49A3C"/>
+  <ellipse cx="492" cy="368" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="492" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">5</text>
+  <!-- Label box right -->
+  <rect x="515" y="348" width="148" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="523" y="362" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">CROSSROADS</text>
+  <text x="523" y="375" font-size="11" fill="#F5EFE0">Q39 BBQ</text>
+  <text x="523" y="387" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">1000 W. 39th St, KC MO</text>
+
+  <!-- ═══ STOP 6: Urbana — Prairie Village ═══ -->
+  <ellipse cx="458" cy="478" rx="20" ry="20" fill="#C49A3C"/>
+  <polygon points="448,494 468,494 458,512" fill="#C49A3C"/>
+  <ellipse cx="458" cy="478" rx="20" ry="20" fill="none" stroke="#1C2B3A" stroke-width="1.5" opacity="0.4"/>
+  <text x="458" y="484" text-anchor="middle" font-size="13" font-weight="bold" fill="#1C2B3A">6</text>
+  <!-- Label box right -->
+  <rect x="481" y="458" width="148" height="44" rx="3" fill="#1C2B3A" opacity="0.88"/>
+  <text x="489" y="472" font-family="sans-serif" font-size="8" font-weight="bold" fill="#C49A3C" letter-spacing="1">PRAIRIE VILLAGE</text>
+  <text x="489" y="485" font-size="11" fill="#F5EFE0">Urbana</text>
+  <text x="489" y="497" font-family="sans-serif" font-size="8" fill="rgba(245,239,224,0.58)">7700 Mission Rd, Prairie Village</text>
+
+  <!-- Decorative header text -->
+  <text x="28" y="158" font-size="13" font-style="italic" fill="#B5522A" opacity="0.85">Follow the Matchday Trail.</text>
+
+  <!-- Soccer ball decoration -->
+  <circle cx="680" cy="62" r="22" fill="none" stroke="#1C2B3A" stroke-width="1.8" opacity="0.2"/>
+  <path d="M 668 52 Q 680 40 692 52 Q 704 64 692 72 Q 680 84 668 72 Q 656 60 668 52"
+        fill="none" stroke="#1C2B3A" stroke-width="1" opacity="0.15"/>
+
+  <!-- KC 2026 stamp -->
+  <circle cx="724" cy="498" r="44" fill="none" stroke="#1C2B3A" stroke-width="2.2" opacity="0.6"/>
+  <circle cx="724" cy="498" r="37" fill="none" stroke="#1C2B3A" stroke-width="0.8" opacity="0.4"/>
+  <text x="724" y="491" text-anchor="middle" font-size="20" font-weight="bold" fill="#1C2B3A" opacity="0.65">KC</text>
+  <text x="724" y="507" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#C49A3C" opacity="0.75" letter-spacing="1.5">★ 2026 ★</text>
+
+  <!-- Western Auto landmark hint -->
+  <text x="96" y="248" font-family="sans-serif" font-size="7" fill="rgba(28,43,58,0.35)" text-anchor="middle" letter-spacing="0.5">WESTERN</text>
+  <text x="96" y="258" font-family="sans-serif" font-size="7" fill="rgba(28,43,58,0.35)" text-anchor="middle" letter-spacing="0.5">AUTO</text>
+  <rect x="87" y="263" width="18" height="28" fill="none" stroke="rgba(28,43,58,0.2)" stroke-width="0.8"/>
+
+  <!-- Outer border -->
+  <rect x="2" y="2" width="796" height="556" fill="none" stroke="rgba(28,43,58,0.18)" stroke-width="2.5"/>
+  <rect x="7" y="7" width="786" height="546" fill="none" stroke="rgba(28,43,58,0.08)" stroke-width="1"/>
+</svg>
